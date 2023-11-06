@@ -1,4 +1,5 @@
 const paramLang = new URLSearchParams( window.location.href).get("lang");
+console.log(paramLang)
 const availableLang = ["ar", "en", "fr", "tr"];
 
 if(availableLang.includes(paramLang)){
@@ -53,7 +54,6 @@ switch (lang){
 
 function redirectToLang(lang) {
   const currentURL = new URL(window.location.href);
-  currentURL.pathname = '/uninstall';
   currentURL.searchParams.set('lang', lang);
   window.location.href = currentURL.toString();
 }
