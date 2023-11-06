@@ -53,6 +53,7 @@ switch (lang){
 
 function redirectToLang(lang) {
   const currentURL = new URL(window.location.href);
+  currentURL.pathname = '/uninstall';
   currentURL.searchParams.set('lang', lang);
   window.location.href = currentURL.toString();
 }
