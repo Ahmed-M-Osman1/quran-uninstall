@@ -1,5 +1,6 @@
-const paramLang = new URLSearchParams( window.location.href).get("lang");
-console.log(paramLang)
+const url = new URL(window.location.href);
+const params = new URLSearchParams(url.search);
+const paramLang = params.get("lang");
 const availableLang = ["ar", "en", "fr", "tr"];
 
 if(availableLang.includes(paramLang)){
