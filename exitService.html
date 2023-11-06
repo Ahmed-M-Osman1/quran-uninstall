@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title class="en">Uninstall | Quran Tab</title>
+  <title class="fr">Désinstaller | Quran Tab</title>
+  <title class="tr">Kaldır | Quran Tab</title>
+  <title class="ar">ألغِ تثبيت | Quran Tab</title>
+  <link rel="icon" href="./assets/icon128.png">
+  <link rel="stylesheet" href="exitService.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div
+  class="nav-bar">
+      <h1>Quran Tab</h1>
+      <button class="reinstall-btn en" onclick="browserDetect()">+ Re-Install</button>
+      <button class="reinstall-btn fr" onclick="browserDetect()">+ Réinstaller</button>
+      <button class="reinstall-btn tr" onclick="browserDetect()">+ Yeniden Yükle</button>
+      <button class="reinstall-btn reinstall-ar ar" onclick="browserDetect()">أعِد التثبيت +</button>
+      <div class="select-lang">
+      <label for="languageSelect" class="languageSelect-label">🌍</label>
+      <select id="languageSelect" onchange="redirectToLang(this.value)">
+        <option value="en" >English</option>
+        <option value="fr" >Français</option>
+        <option value="tr" >Türkçe</option>
+        <option value="ar" >العربية</option>
+      </select>
+      </div>
+</div>
+
+<div class="body-card">
+  <h2 class="header en">Help us improve</h2>
+  <h2 class="header fr">Aidez-nous à améliorer</h2>
+  <h2 class="header tr">Gelişmemize Yardımcı Olun</h2>
+  <h2 class="header ar">ساعدنا على التحسين</h2>
+  <h4 class="sub-header en">Why did you uninstall Quran Tab? Check all that apply</h4>
+  <h4 class="sub-header fr">Pourquoi avez-vous désinstallé Quran Tab ? Cochez tout ce qui s'applique</h4>
+  <h4 class="sub-header tr">Neden Quran Tab'ı kaldırdınız? Geçerli olanları işaretleyin</h4>
+  <h4 class="sub-header ar"> <bdi> لماذا قمت بالغاء تثبيت Quran Tab ؟ قم باختيار كل الاسباب</bdi></h4>
+  <div class="questionnaire">
+    <div class="icon">
+      <img class="img" src="./assets/icon.png" alt="quran tab icon">
+      <p class="thanks-text en">Thank you for choosing Quran Tab.</p>
+      <p class="thanks-text fr">Merci d'avoir choisi Quran Tab.</p>
+      <p class="thanks-text tr">Quran Tab'ı seçtiğiniz için teşekkür ederiz.</p>
+      <p class="thanks-text ar">شكرًا لاختيارك لـ Quran Tab.</p>
+      <p class="thanks-text en">We hope that you download it again</p>
+      <p class="thanks-text fr">Nous espérons que vous le téléchargerez à nouveau</p>
+      <p class="thanks-text tr">Tekrar indirmenizi umuyoruz</p>
+      <p class="thanks-text ar">نأمل أن تقوم بتنزيله مرة أخرى</p>
+    </div>
+    <div class="questions">
+      <form action="https://getform.io/f/a088d1ba-2ebd-4bfd-956f-e55e9ad54fe8" method="POST">
+        <input class="question" type="checkbox" id="bugs" name="It had bugs or performance issues" value="checked" onchange="enableSubmission()"/>
+        <label for="bugs" class="checkbox-label en">It had bugs or performance issues.</label>
+        <label for="bugs" class="checkbox-label fr">Il y avait des bugs ou des problèmes de performance.</label>
+        <label for="bugs" class="checkbox-label tr">Bazı hatalar veya performans sorunları vardı.</label>
+        <label for="bugs" class="checkbox-label ar">كانت هناك أخطاء أو مشكلات في الأداء.</label>
+        <br />
+        <input class="question" type="checkbox" id="design" name="Design/Color is unconformable to me" value="checked" onchange="enableSubmission()"/>
+        <label for="design" class="checkbox-label en">Design/Color is unconformable to me.</label>
+        <label for="design" class="checkbox-label fr">Le design ou la couleur ne me convenait pas.</label>
+        <label for="design" class="checkbox-label tr">Tasarım / Renkler benim için uygunsuzdu.</label>
+        <label for="design" class="checkbox-label ar">التصميم / الألوان لا تناسبني.</label>
+        <br />
+        <input class="question" type="checkbox" id="question" name="I was expecting more features" value="checked" onchange="enableSubmission()"/>
+        <label for="question" class="checkbox-label en">I was expecting more features.</label>
+        <label for="question" class="checkbox-label fr">Je m'attendais à plus de fonctionnalités.</label>
+        <label for="question" class="checkbox-label tr">Daha fazla özellik bekliyordum.</label>
+        <label for="question" class="checkbox-label ar">كنت أتوقع المزيد من المميزات.</label>
+        <br />
+        <input class="question" type="checkbox" id="responsive" name="The extension was slow or unresponsive"
+               value="checked" onchange="enableSubmission()"/>
+        <label for="responsive" class="checkbox-label en">The extension was slow or unresponsive.</label>
+        <label for="responsive" class="checkbox-label fr">L'extension était lente ou non réactive.</label>
+        <label for="responsive" class="checkbox-label tr">Eklenti yavaş veya tepkisizdi.</label>
+        <label for="responsive" class="checkbox-label ar">كان التمديد بطيئًا أو لا يستجيب.</label>
+        <br />
+        <input class="question" type="checkbox" id="other" name="Other" value="checked" onchange="enableSubmission()"/>
+        <label for="other" class="checkbox-label en">Other</label>
+        <label for="other" class="checkbox-label fr">Autre</label>
+        <label for="other" class="checkbox-label tr">Diğer</label>
+        <label for="other" class="checkbox-label ar">آخر</label>
+        <br />
+        <label for="text-area" class="checkbox-label en">Tell us more:</label>
+        <label for="text-area" class="checkbox-label fr">Dites-nous en plus :</label>
+        <label for="text-area" class="checkbox-label tr">Daha fazla bilgi verin:</label>
+        <label for="text-area" class="checkbox-label ar">قول لنا المزيد:</label>
+        <br />
+        <textarea id="text-area" name="tell us more" rows="5"
+                  class="tell-us-more"
+                  placeholder="we would like to hear more from you.
+could you please tell us more ..."></textarea>
+        <br />
+        <button class="submission-btn" disabled>Submit</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+</body>
+<script src="exitService.js"></script>
+</html>
