@@ -1,63 +1,108 @@
 @font-face {
-  font-family: 'Tajawal_Medium';
-  src: url('assets/Tajawal-Medium.ttf');
+  font-family: "Tajawal_Medium";
+  src: url("assets/Tajawal-Medium.ttf");
 }
-/* Nav Bar */
 
-.nav-bar{
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+html[dir="rtl"] :is(.body-card, .reinstall-ar) {
+  font-family: Tajawal_Medium, sans-serif;
+}
+
+input[type="checkbox"],
+label,
+button,
+select,
+option {
+  cursor: pointer;
+}
+
+button {
+  border-radius: 0.4rem;
+}
+
+/* Nav Bar */
+.nav-bar {
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: rgba(0, 0, 0, 0.03) 0 2px 9px 0;
   display: flex;
-  height: 10%;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  font-family: Roboto, sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
 }
 
-.reinstall-btn{
-  position: absolute;
-  top: 3.5%;
-  right: 2%;
-  background-color: white;
-  border: solid 2px rgb(67,130,247);
-  color: rgb(67,130,247);
-  height: 4%;
-  font-size: 18px;
-  font-family: Roboto , sans-serif;
+html[dir="rtl"] .nav-bar {
+  flex-direction: row-reverse;
 }
 
 .select-lang {
-  position: absolute;
-  top: 3.5%;
-  left: 2%;
-  background-color: white;
-  color: rgb(67,130,247);
-  height: 4%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(67, 130, 247);
 }
 
-.header{
-  font-size: 36px;
-  margin-bottom: 15px;
+.select-lang > select {
+  padding: 0.25rem 0.5rem;
+}
+
+.languageSelect-label {
+  cursor: default;
+  font-size: 1.6rem;
+}
+
+.nav-bar > h1 {
+  font-size: 3.6rem;
+  user-select: none;
+}
+
+.reinstall-btn {
+  background-color: rgb(255, 255, 255);
+  border: solid 2px rgb(67, 130, 247);
+  color: rgb(67, 130, 247);
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.header {
+  font-size: 3.6rem;
+  margin-block-end: 1.5rem;
 }
 .sub-header {
-  font-size: 26px;
+  font-size: 3rem;
   color: rgb(128, 128, 128);
-  margin-top: 0;
+  margin-block-end: 2.4rem;
 }
-
 
 .body-card {
   border: solid 1px rgba(0, 0, 0, 0.06);
-  padding: 47px;
+  padding: 4.7rem;
   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.02);
   border-radius: 2px;
-  margin: 47px 64px;
+  margin-block: 4.7rem;
+  margin-inline: auto;
   background-color: #ffffff;
-  display: grid;
   text-align: center;
-  font-family: Roboto , sans-serif;
+}
+
+.questionnaire {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .img {
@@ -67,58 +112,79 @@
 }
 
 .icon {
-  float:left;
-  width: 50%;
   text-align: center;
 }
 
 .questions {
-  float: right;
-  width: 50%;
-  text-align: left;
+  text-align: start;
 }
 
-.ar , .en, .fr, .tr {
+.ar,
+.en,
+.fr,
+.tr {
   display: none;
-  font-size: 18px;
 }
 
 .question {
-  margin-bottom: 14px;
+  margin-bottom: 1.4rem;
 }
 
-.checkbox-label{
-  font-size: larger;
+.checkbox-label {
+  font-size: 2rem;
+  user-select: none;
+  margin-inline-start: 1.2rem;
 }
 
 .submission-btn {
   width: 100%;
-  max-width: 410px;
-  height: 40px;
-  background-color: rgb(128,128,128);
-  border: solid 2px rgb(128,128,128);
-  color: white;
-  font-size: 24px;
-  font-family: Roboto, sans-serif;
+  max-width: 35rem;
+  background-color: rgb(128, 128, 128);
+  border: solid 2px rgb(128, 128, 128);
+  color: rgb(255, 255, 255);
+  font-size: 2.4rem;
+  padding: 0.25rem 0.5rem;
 }
 
-.tell-us-more{
-  width: 100%;
-  max-width: 405px;
-  margin-bottom: 14px;
+.tell-us-more {
+  width: 90%;
+  margin-block: 1.4rem;
+  padding: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  max-width: 35rem;
 }
 
-.thanks-text{
-  margin: 0;
+.tell-us-more:focus-visible {
+  outline: solid 2px rgb(67, 130, 247);
+  border: none;
+  border-radius: 0.4rem;
 }
 
-@media only screen and (max-width: 1000px) {
+.tell-us-more::placeholder {
+  font-size: 1.4rem;
+}
 
-  .icon{
+.tell-us-more:focus::placeholder {
+  color: transparent;
+}
+
+.thanks-text {
+  font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 63em) {
+  .questionnaire {
+    display: block;
+  }
+
+  .icon {
     display: none;
   }
 
   .questions {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
