@@ -19,7 +19,7 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-html[dir="rtl"] :is(.body-card, .reinstall-ar) {
+html[dir="rtl"] :is(.body-card, .reinstall-ar, .submission-btn) {
   font-family: Tajawal_Medium, sans-serif;
 }
 
