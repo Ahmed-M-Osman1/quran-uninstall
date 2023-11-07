@@ -62,9 +62,7 @@ function redirectToLang(lang) {
 
 function browserDetect() {
   let userAgent = navigator.userAgent;
-  if (userAgent.match(/firefox|fxios/i)) {
-    window.location.href = "https://addons.mozilla.org/en-US/firefox/addon/quran-tab-firefox/";
-  } else if (userAgent.match(/edg/i)) {
+  if (userAgent.match(/edg/i)) {
     window.location.href =
         "https://microsoftedge.microsoft.com/addons/detail/quran-tab/hnfepfakgcalolgicjdfmaaellnondji?hl=es-ES";
   } else {
