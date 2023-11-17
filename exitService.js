@@ -1,57 +1,51 @@
-const url = new URL(window.location.href);
-const params = new URLSearchParams(url.search);
+const params = new URLSearchParams(window.location.search);
 const paramLang = params.get("lang");
 const availableLang = ["ar", "en", "fr", "tr"];
 
+function updateLanguage(lang) {
+  const langTags = document.querySelectorAll(`.${lang}`);
+
+  langTags.forEach(ele => ele.classList.remove(lang));
+  loadSubmitTextAreaContent(lang);
+  document.getElementById("languageSelect").value = lang;
+}
+
 if (availableLang.includes(paramLang)) {
-  const allLangTags = document.querySelectorAll(`.${paramLang}`);
-  allLangTags.forEach(ele => ele.classList.remove(`${paramLang}`));
-  loadSubmitTextAreaContent(paramLang);
-  document.getElementById("languageSelect").value = paramLang;
+  updateLanguage(paramLang);
 } else {
-  const allLangTags = document.querySelectorAll(".en");
-  allLangTags.forEach(ele => ele.classList.remove("en"));
+  updateLanguage("en");
 }
 
 function enableSubmission() {
-  const isChecked = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+  const isChecked = Array.from(document.querySelectorAll("input[type='checkbox']"));
   const enableSubmitBtn = isChecked.some(checkbox => checkbox.checked);
   const submitBtn = document.querySelector(".submission-btn");
-  if (enableSubmitBtn) {
-    submitBtn.disabled = false;
-    submitBtn.style.backgroundColor = "rgb(67,130,247)";
-    submitBtn.style.border = "solid 2px rgb(67,130,247)";
-  } else {
-    submitBtn.disabled = true;
-    submitBtn.style.backgroundColor = "rgb(128,128,128)";
-    submitBtn.style.border = "solid 2px rgb(128,128,128)";
-  }
+
+  submitBtn.disabled = !enableSubmitBtn;
+  submitBtn.style.backgroundColor = enableSubmitBtn ? "rgb(67,130,247)" : "rgb(128,128,128)";
+  submitBtn.style.border = `solid 2px ${enableSubmitBtn ? "rgb(67,130,247)" : "rgb(128,128,128)"}`;
 }
+
 function loadSubmitTextAreaContent(lang) {
-  switch (lang) {
-    case "ar":
-      document.documentElement.lang = "ar";
-      document.documentElement.dir = "rtl";
-      document.querySelector(".tell-us-more").placeholder = "نود أن نسمع المزيد منك. هل يمكنك أن تقول لنا المزيد...";
-      document.querySelector(".submission-btn").innerHTML = "إرسال";
-      break;
-    case "fr":
-      document.documentElement.lang = "fr";
-      document.documentElement.dir = "ltr";
-      document.querySelector(".tell-us-more").placeholder =
-          "Nous aimerions en savoir plus de votre part. Pourriez-vous nous en dire plus...";
-      document.querySelector(".submission-btn").innerHTML = "Soumettre";
-      break;
-    case "tr":
-      document.documentElement.lang = "tr";
-      document.documentElement.dir = "ltr";
-      document.querySelector(".tell-us-more").placeholder =
-          "sizden daha fazlasını duymak isteriz. lütfen bize daha fazlasını anlatır mısınız...";
-      document.querySelector(".submission-btn").innerHTML = "Gönder";
-      break;
-    default:
-      break;
-  }
+  if (lang === "en") return;
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+  const placeholders = {
+    ar: "نود أن نسمع المزيد منك. هل يمكنك أن تقول لنا المزيد...",
+    fr: "Nous aimerions en savoir plus de votre part. Pourriez-vous nous en dire plus...",
+    tr: "sizden daha fazlasını duymak isteriz. lütfen bize daha fazlasını anlatır mısınız...",
+  };
+
+  const submitTexts = {
+    ar: "إرسال",
+    fr: "Soumettre",
+    tr: "Gönder",
+  };
+
+  document.querySelector(".tell-us-more").placeholder = placeholders[lang] || "";
+  document.querySelector(".submission-btn").innerHTML = submitTexts[lang] || "";
 }
 
 function redirectToLang(lang) {
@@ -61,11 +55,7 @@ function redirectToLang(lang) {
 }
 
 function browserDetect() {
-  let userAgent = navigator.userAgent;
-  if (userAgent.match(/edg/i)) {
-    window.location.href =
-        "https://microsoftedge.microsoft.com/addons/detail/quran-tab/hnfepfakgcalolgicjdfmaaellnondji?hl=es-ES";
-  } else {
-    window.location.href = "https://chromewebstore.google.com/detail/quran-tab/afaihcdgkjebgabomemccdneglknjkdd";
-  }
+  window.location.href = navigator.userAgent.includes("Edg")
+      ? "https://microsoftedge.microsoft.com/addons/detail/quran-tab/hnfepfakgcalolgicjdfmaaellnondji?hl=es-ES"
+      : "https://chromewebstore.google.com/detail/quran-tab/afaihcdgkjebgabomemccdneglknjkdd";
 }
