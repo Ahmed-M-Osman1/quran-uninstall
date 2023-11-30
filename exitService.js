@@ -49,7 +49,7 @@ function loadSubmitTextAreaContent(lang) {
 }
 
 function redirectToLang(lang, toThankYouPage) {
-  const currentURL = toThankYouPage ?  new URL(window.location.origin + '/thankyou') : new URL(window.location.href);
+  const currentURL = toThankYouPage ?  new URL(window.location.origin + '/thankyou.html') : new URL(window.location.href);
   currentURL.searchParams.set("lang", lang);
   window.location.href = currentURL.toString();
 }
