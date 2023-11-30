@@ -54,16 +54,14 @@
         <p class="thanks-text en">We hope that you download it again</p>
         <p class="thanks-text fr">Nous espérons que vous le téléchargerez à nouveau</p>
         <p class="thanks-text tr">Tekrar indirmenizi umuyoruz</p>
-        <p class="thanks-text ar">نأمل أن تقوم بتنزيله مرة أخرى</p>
+        <p class="thanks-text ar">نأمل أن تقوم بتنزيلها مرة أخرى</p>
       </div>
       <div class="questions">
-        <form action="https://getform.io/f/32c119b0-6c75-4f46-a5d1-e49ac108efec" method="POST">
           <input
                   class="question"
                   type="checkbox"
                   id="bugs"
                   name="It had bugs"
-                  value="checked"
                   onchange="enableSubmission()" />
           <label for="bugs" class="checkbox-label en">It had bugs.</label>
           <label for="bugs" class="checkbox-label fr">Il y avait des bugs.</label>
@@ -75,7 +73,6 @@
                   type="checkbox"
                   id="design"
                   name="Design is unconformable to me"
-                  value="checked"
                   onchange="enableSubmission()" />
           <label for="design" class="checkbox-label en">Design is unconformable to me.</label>
           <label for="design" class="checkbox-label fr">Le design ne me convenait pas.</label>
@@ -87,7 +84,6 @@
                   type="checkbox"
                   id="color"
                   name="Color is unconformable to me"
-                  value="checked"
                   onchange="enableSubmission()" />
           <label for="color" class="checkbox-label en">Color is unconformable to me.</label>
           <label for="color" class="checkbox-label fr">la couleur ne me convenait pas.</label>
@@ -97,21 +93,19 @@
           <input
                   class="question"
                   type="checkbox"
-                  id="question"
+                  id="features"
                   name="I was expecting more features"
-                  value="checked"
                   onchange="enableSubmission()" />
-          <label for="question" class="checkbox-label en">I was expecting more features.</label>
-          <label for="question" class="checkbox-label fr">Je m'attendais à plus de fonctionnalités.</label>
-          <label for="question" class="checkbox-label tr">Daha fazla özellik bekliyordum.</label>
-          <label for="question" class="checkbox-label ar">كنت أتوقع المزيد من المميزات.</label>
+          <label for="features" class="checkbox-label en">I was expecting more features.</label>
+          <label for="features" class="checkbox-label fr">Je m'attendais à plus de fonctionnalités.</label>
+          <label for="features" class="checkbox-label tr">Daha fazla özellik bekliyordum.</label>
+          <label for="features" class="checkbox-label ar">كنت أتوقع المزيد من المميزات.</label>
           <br />
           <input
                   class="question"
                   type="checkbox"
                   id="responsive"
                   name="The extension was slow or unresponsive"
-                  value="checked"
                   onchange="enableSubmission()" />
           <label for="responsive" class="checkbox-label en">The extension was slow or irresponsive.</label>
           <label for="responsive" class="checkbox-label fr">L'extension était lente ou non réactive.</label>
@@ -123,7 +117,6 @@
                   type="checkbox"
                   id="other"
                   name="Other"
-                  value="checked"
                   onchange="enableSubmission()" />
           <label for="other" class="checkbox-label en">Other</label>
           <label for="other" class="checkbox-label fr">Autre</label>
@@ -143,11 +136,11 @@
                   placeholder="We would like to hear more from you.
 could you please tell us more ..."></textarea>
           <br />
-          <button class="submission-btn" disabled>Submit</button>
-        </form>
+          <button class="submission-btn" disabled onclick="submitSubscriptionForm()">Submit</button>
       </div>
     </div>
   </div>
 </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </html>

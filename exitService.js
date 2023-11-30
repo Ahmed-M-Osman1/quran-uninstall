@@ -48,8 +48,8 @@ function loadSubmitTextAreaContent(lang) {
   document.querySelector(".submission-btn").innerHTML = submitTexts[lang] || "";
 }
 
-function redirectToLang(lang) {
-  const currentURL = new URL(window.location.href);
+function redirectToLang(lang, toThankYouPage) {
+  const currentURL = toThankYouPage ?  new URL(window.location.origin + '/thankyou') : new URL(window.location.href);
   currentURL.searchParams.set("lang", lang);
   window.location.href = currentURL.toString();
 }
@@ -58,4 +58,26 @@ function browserDetect() {
   window.location.href = navigator.userAgent.includes("Edg")
       ? "https://microsoftedge.microsoft.com/addons/detail/quran-tab/hnfepfakgcalolgicjdfmaaellnondji?hl=es-ES"
       : "https://chromewebstore.google.com/detail/quran-tab/afaihcdgkjebgabomemccdneglknjkdd";
+}
+
+
+const SUPABASE_URL = 'https://uakfujmfwhamfievqpof.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVha2Z1am1md2hhbWZpZXZxcG9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDEzNDEwOTYsImV4cCI6MjAxNjkxNzA5Nn0.GlYDaPCqGcq4bEZEFt1yGqD00KvVTMc2XYs6B2R6Av4'
+
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+async function submitSubscriptionForm(){
+  const bugs = document.getElementById("bugs").checked;
+  const design = document.getElementById("design").checked;
+  const color = document.getElementById("color").checked;
+  const features = document.getElementById("features").checked;
+  const responsive = document.getElementById("responsive").checked;
+  const other = document.getElementById("other").checked;
+  const textArea = document.getElementById("text-area").value;
+  const location = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const browserType = navigator.userAgent.includes("Edg") ? "Edg" : "Chrome";
+  const { data, error } = await _supabase
+      .from('uninstall_feedback')
+      .insert([ {it_had_bugs: bugs, design_is_unconformable_to_me:design, color_is_unconformable_to_me: color,  i_was_expecting_more_features : features, The_extension_was_slow_or_unresponsive:responsive, other:other, tell_us_more:  textArea, location: location, browserType: browserType}])
+  redirectToLang(paramLang, true)
 }

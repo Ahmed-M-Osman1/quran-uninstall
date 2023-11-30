@@ -46,9 +46,20 @@ button {
   padding: 2rem;
 }
 
+.Quran-tab-title {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: rgba(0, 0, 0, 0.03) 0 2px 9px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
 html[dir="rtl"] .nav-bar {
   flex-direction: row-reverse;
 }
+
 
 .select-lang {
   background-color: rgb(255, 255, 255);
@@ -64,7 +75,7 @@ html[dir="rtl"] .nav-bar {
   font-size: 1.6rem;
 }
 
-.nav-bar > h1 {
+.nav-bar , .Quran-tab-title > h1 {
   font-size: 3.6rem;
   user-select: none;
 }
